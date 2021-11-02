@@ -14,8 +14,14 @@ with st.form(key="query"):
 
 
 if submit_button:
-    con = sql.connect("Fake_sales_data.db")
-    data = pd.read_sql_query(query,con)
+    try:
+        con = sql.connect("Fake_sales_data.db")
+        data = pd.read_sql_query(query,con)
+    
+    except Exception as e:
+        st.write(e.message)
+        raise e
+
     st.session_state["req"] = data.reset_index()
 
 
