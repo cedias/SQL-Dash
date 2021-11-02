@@ -19,7 +19,7 @@ if submit_button:
         data = pd.read_sql_query(query,con)
     
     except Exception as e:
-        st.write(e.message())
+        st.write(e)
         raise e
 
     st.session_state["req"] = data.reset_index()
